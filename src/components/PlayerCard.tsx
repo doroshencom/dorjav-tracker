@@ -47,7 +47,7 @@ export default function PlayerCard({ player, ddVersion, onViewDetail }: Props) {
   const iconUrl = ddVersion && summoner ? profileIconUrl(ddVersion, summoner.profileIconId) : '';
 
   return (
-    <div className="pcard">
+    <div className="pcard" onClick={onViewDetail} style={{ cursor: 'pointer' }}>
       {/* Champion splash background */}
       {splashUrl && (
         <img
@@ -83,11 +83,8 @@ export default function PlayerCard({ player, ddVersion, onViewDetail }: Props) {
           )}
         </div>
 
-        {/* Name — clickable → detail */}
         <div className="pcard-identity">
-          <button className="pcard-name" onClick={onViewDetail}>
-            {config.gameName}
-          </button>
+          <span className="pcard-name">{config.gameName}</span>
           <span className="pcard-tag">#{config.tagLine}</span>
         </div>
 

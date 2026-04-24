@@ -24,6 +24,23 @@
   -webkit-font-smoothing: antialiased;
 }
 
+[data-theme="light"] {
+  --bg: #f0ece4;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f7f3ee;
+  --bg-header: #e8e0d4;
+  --border: #d0c8bc;
+  --gold: #9a7020;
+  --gold-dim: #c49a3c;
+  --blue: #0878a0;
+  --text: #1c1a16;
+  --text-dim: #6a6258;
+  --wins: #2a7a48;
+  --losses: #c02038;
+  background: var(--bg);
+  color: var(--text);
+}
+
 body {
   min-height: 100vh;
   background: var(--bg);
