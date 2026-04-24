@@ -1,6 +1,9 @@
 import { createCanvas, loadImage, GlobalFonts } from '@napi-rs/canvas';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 
-GlobalFonts.loadSystemFonts();
+const __dirname = dirname(fileURLToPath(import.meta.url));
+GlobalFonts.registerFromPath(join(__dirname, 'fonts/Roboto.ttf'), 'Roboto');
 
 // ── Palette (matches index.css variables) ─────────────────────────────────
 const BG       = '#060d1a';
@@ -76,10 +79,10 @@ export async function renderStatsImage(players) {
   // ── Header ────────────────────────────────────────────────────────────────
   ctx.textAlign = 'left';
   ctx.fillStyle = GOLD;
-  ctx.font = 'bold 20px Arial, sans-serif';
+  ctx.font = 'bold 20px Roboto, Arial, sans-serif';
   ctx.fillText('ELO TRAIN', PAD, PAD + 22);
   ctx.fillStyle = TEXT_DIM;
-  ctx.font = '13px Arial, sans-serif';
+  ctx.font = '13px Roboto, Arial, sans-serif';
   ctx.fillText('Ranked Flex 5v5  ·  EUW', PAD, PAD + 42);
 
   // ── Cards ─────────────────────────────────────────────────────────────────
@@ -136,7 +139,7 @@ export async function renderStatsImage(players) {
 
     // ── Tier badge ─────────────────────────────────────────────────────────
     if (!error && flex?.tier) {
-      ctx.font = 'bold 10px Arial, sans-serif';
+      ctx.font = 'bold 10px Roboto, Arial, sans-serif';
       const bw = ctx.measureText(flex.tier).width + 18;
       ctx.fillStyle = tierColor + '22';
       rr(ctx, tx, cy + 11, bw, 20, 4);
@@ -153,17 +156,17 @@ export async function renderStatsImage(players) {
 
     // ── Player name ────────────────────────────────────────────────────────
     ctx.fillStyle = '#f0e6d3';
-    ctx.font = 'bold 22px Arial, sans-serif';
+    ctx.font = 'bold 22px Roboto, Arial, sans-serif';
     ctx.fillText(config.gameName, tx, cy + 63);
 
     // ── Tag ────────────────────────────────────────────────────────────────
     ctx.fillStyle = TEXT_DIM;
-    ctx.font = '13px Arial, sans-serif';
+    ctx.font = '13px Roboto, Arial, sans-serif';
     ctx.fillText(`#${config.tagLine}`, tx, cy + 81);
 
     if (error || !flex) {
       ctx.fillStyle = TEXT_DIM;
-      ctx.font = 'italic 13px Arial, sans-serif';
+      ctx.font = 'italic 13px Roboto, Arial, sans-serif';
       ctx.fillText('Sin clasificar', tx, cy + 106);
       return;
     }
@@ -174,11 +177,11 @@ export async function renderStatsImage(players) {
     // ── Rank + LP ──────────────────────────────────────────────────────────
     const rankStr = `${cap(flex.tier)} ${flex.rank}`;
     ctx.fillStyle = tierColor;
-    ctx.font = 'bold 14px Arial, sans-serif';
+    ctx.font = 'bold 14px Roboto, Arial, sans-serif';
     ctx.fillText(rankStr, tx, cy + 105);
     const rankW = ctx.measureText(rankStr).width;
     ctx.fillStyle = TEXT_DIM;
-    ctx.font = '13px Arial, sans-serif';
+    ctx.font = '13px Roboto, Arial, sans-serif';
     ctx.fillText(` · ${flex.leaguePoints} LP`, tx + rankW, cy + 105);
 
     // ── WR bar ─────────────────────────────────────────────────────────────
@@ -198,23 +201,23 @@ export async function renderStatsImage(players) {
 
     // WR percentage next to bar
     ctx.fillStyle = rc;
-    ctx.font = 'bold 13px Arial, sans-serif';
+    ctx.font = 'bold 13px Roboto, Arial, sans-serif';
     ctx.fillText(`${rate}%`, barX + barW + 8, cy + 124);
 
     // ── W / L ──────────────────────────────────────────────────────────────
     const wlX = barX + barW + 52;
     ctx.fillStyle = WIN_COL;
-    ctx.font = 'bold 12px Arial, sans-serif';
+    ctx.font = 'bold 12px Roboto, Arial, sans-serif';
     ctx.fillText(`${flex.wins}W`, wlX, cy + 124);
     const wW = ctx.measureText(`${flex.wins}W`).width;
 
     ctx.fillStyle = TEXT_DIM;
-    ctx.font = '12px Arial, sans-serif';
+    ctx.font = '12px Roboto, Arial, sans-serif';
     ctx.fillText(' / ', wlX + wW, cy + 124);
     const sepW = ctx.measureText(' / ').width;
 
     ctx.fillStyle = LOSS_COL;
-    ctx.font = 'bold 12px Arial, sans-serif';
+    ctx.font = 'bold 12px Roboto, Arial, sans-serif';
     ctx.fillText(`${flex.losses}L`, wlX + wW + sepW, cy + 124);
 
     // ── Top champions (mastery) ────────────────────────────────────────────
@@ -229,7 +232,7 @@ export async function renderStatsImage(players) {
       ctx.globalAlpha = 1;
 
       ctx.fillStyle = TEXT_DIM;
-      ctx.font = '11px Arial, sans-serif';
+      ctx.font = '11px Roboto, Arial, sans-serif';
       ctx.fillText(
         topChamps.map(c => c.name ?? '—').join('  ·  '),
         tx,
