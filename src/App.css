@@ -7,7 +7,15 @@
 .dashboard {
   max-width: 1140px;
   margin: 0 auto;
-  padding: 0 24px 60px;
+  padding: 28px 24px 60px;
+}
+
+/* ── Persistent header wrapper ──────────────────────── */
+
+.app-header-outer {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 /* ── Header ─────────────────────────────────────────── */
@@ -15,7 +23,7 @@
 .dash-header {
   padding: 28px 0 0;
   border-bottom: 1px solid var(--border);
-  margin-bottom: 28px;
+  margin-bottom: 0;
 }
 
 .dash-header-top {
@@ -575,7 +583,7 @@
 /* ── Player Detail ──────────────────────────────────── */
 
 .player-detail {
-  max-width: 820px;
+  max-width: 1140px;
   margin: 0 auto;
   padding: 28px 24px 60px;
 }

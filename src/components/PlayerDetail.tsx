@@ -6,7 +6,6 @@ import { getLoLGraphsRanks } from '../api';
 interface Props {
   player: PlayerState;
   ddVersion: string;
-  onBack: () => void;
 }
 
 function timeAgo(creationMs: number): string {
@@ -31,7 +30,7 @@ function fmtDamage(dmg: number): string {
 }
 
 
-export default function PlayerDetail({ player, ddVersion, onBack }: Props) {
+export default function PlayerDetail({ player, ddVersion }: Props) {
   const { config, summoner, flexRanked, championStats, matches, loadingChampions } = player;
   const [champRanks, setChampRanks] = useState<Record<string, string>>({});
   const [ranksLoading, setRanksLoading] = useState(true);
@@ -76,11 +75,7 @@ export default function PlayerDetail({ player, ddVersion, onBack }: Props) {
 
   return (
     <div className="player-detail">
-      <button className="back-btn" onClick={onBack}>
-        ← Volver
-      </button>
-
-      <div className="detail-header">
+<div className="detail-header">
         <div className="detail-icon-wrap">
           {iconUrl && (
             <img
