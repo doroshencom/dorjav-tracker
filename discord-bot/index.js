@@ -16,7 +16,7 @@ client.on('interactionCreate', async (interaction) => {
     await interaction.deferReply();
     try {
       const players = await fetchAllPlayers();
-      const imageBuffer = renderStatsImage(players);
+      const imageBuffer = await renderStatsImage(players);
       const attachment = new AttachmentBuilder(imageBuffer, { name: 'stats.png' });
       await interaction.editReply({ files: [attachment] });
     } catch (err) {
