@@ -75,7 +75,7 @@ export async function renderStatsImage(players) {
   ctx.textAlign = 'left';
   ctx.fillStyle = GOLD;
   ctx.font = 'bold 20px Arial, sans-serif';
-  ctx.fillText('DORJAV TEAM', PAD, PAD + 22);
+  ctx.fillText('ELO TRAIN', PAD, PAD + 22);
   ctx.fillStyle = TEXT_DIM;
   ctx.font = '13px Arial, sans-serif';
   ctx.fillText('Ranked Flex 5v5  ·  EUW', PAD, PAD + 42);
