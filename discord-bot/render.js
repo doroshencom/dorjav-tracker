@@ -1,4 +1,6 @@
-import { createCanvas, loadImage } from '@napi-rs/canvas';
+import { createCanvas, loadImage, GlobalFonts } from '@napi-rs/canvas';
+
+GlobalFonts.loadSystemFonts();
 
 // ── Palette (matches index.css variables) ─────────────────────────────────
 const BG       = '#060d1a';
