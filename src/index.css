@@ -1,0 +1,43 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #060d1a;
+  --bg-card: #0d1c35;
+  --bg-card-hover: #122240;
+  --bg-header: #07101f;
+  --border: #1a2f50;
+  --gold: #c89b3c;
+  --gold-dim: #8a6b28;
+  --blue: #0bc4e6;
+  --text: #d8cfc4;
+  --text-dim: #7a8aaa;
+  --wins: #4caf74;
+  --losses: #e84057;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 15px;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+img {
+  display: block;
+}
