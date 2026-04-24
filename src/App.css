@@ -63,8 +63,6 @@
 
 .dash-actions { display: flex; gap: 10px; }
 
-.theme-toggle { padding: 7px 10px; font-size: 14px; }
-
 /* ── Player nav tabs ────────────────────────────────── */
 
 .dash-nav {

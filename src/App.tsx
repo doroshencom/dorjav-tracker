@@ -19,12 +19,6 @@ const blank = (): PlayerState[] =>
     error: null,
   }));
 
-function getInitialTheme(): 'dark' | 'light' {
-  const stored = localStorage.getItem('theme');
-  if (stored === 'dark' || stored === 'light') return stored;
-  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-}
-
 export default function App() {
   const [ddVersion, setDdVersion] = useState('');
   const [view, setView] = useState<'dashboard' | 'player'>('dashboard');
@@ -34,14 +28,6 @@ export default function App() {
   const [tempKey, setTempKey] = useState('');
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState('');
-  const [theme, setTheme] = useState<'dark' | 'light'>(getInitialTheme);
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme === 'light' ? 'light' : '';
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark');
 
   const patch = (index: number, update: Partial<PlayerState>) =>
     setPlayers(prev => prev.map((p, i) => (i === index ? { ...p, ...update } : p)));
@@ -116,9 +102,6 @@ export default function App() {
             <div className="dash-actions">
               <button className="action-btn" onClick={loadAll}>↺ Recargar</button>
               <button className="action-btn" onClick={() => setShowKey(v => !v)}>⚙ API Key</button>
-              <button className="action-btn theme-toggle" onClick={toggleTheme} title={theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}>
-                {theme === 'dark' ? '☀' : '☾'}
-              </button>
             </div>
           </div>
 
