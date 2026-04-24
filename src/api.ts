@@ -3,12 +3,12 @@ import { REGION, ROUTING, FLEX_QUEUE_ID, MATCHES_TO_FETCH } from './config';
 
 const sleep = (ms: number) => new Promise<void>(r => setTimeout(r, ms));
 
-async function apiFetch(url: string): Promise<Response> {
+async function apiFetch(url: string, retries = 3): Promise<Response> {
   const res = await fetch(url);
-  if (res.status === 429) {
+  if (res.status === 429 && retries > 0) {
     const wait = parseInt(res.headers.get('Retry-After') || '2', 10);
     await sleep(wait * 1000);
-    return apiFetch(url);
+    return apiFetch(url, retries - 1);
   }
   return res;
 }

@@ -25,6 +25,11 @@ function fmtDuration(secs: number): string {
   return `${m}:${String(s).padStart(2, '0')}`;
 }
 
+function fmtDamage(dmg: number): string {
+  if (dmg >= 1000) return `${(dmg / 1000).toFixed(1)}k`;
+  return String(dmg);
+}
+
 
 export default function PlayerDetail({ player, ddVersion, onBack }: Props) {
   const { config, summoner, flexRanked, championStats, matches, loadingChampions } = player;
