@@ -9,4 +9,4 @@ export const PLAYERS = [
 export const REGION = 'euw1';
 export const ROUTING = 'europe';
 export const FLEX_QUEUE_ID = 440;
-export const MATCHES_TO_FETCH = 20;
+export const MATCHES_TO_FETCH = 10;

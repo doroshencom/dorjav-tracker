@@ -3,13 +3,8 @@ import { REGION, ROUTING, FLEX_QUEUE_ID, MATCHES_TO_FETCH } from './config';
 
 const sleep = (ms: number) => new Promise<void>(r => setTimeout(r, ms));
 
-async function apiFetch(url: string, retries = 3): Promise<Response> {
+async function apiFetch(url: string): Promise<Response> {
   const res = await fetch(url);
-  if (res.status === 429 && retries > 0) {
-    const wait = parseInt(res.headers.get('Retry-After') || '2', 10);
-    await sleep(wait * 1000);
-    return apiFetch(url, retries - 1);
-  }
   return res;
 }
 
@@ -79,11 +74,11 @@ export async function fetchFlexData(puuid: string): Promise<{ championStats: Cha
   const matches: MatchData[] = [];
 
   for (const id of matchIds) {
-    await sleep(120);
+    await sleep(500);
     try {
       matches.push(await getMatch(id));
     } catch {
-      // skip failed match
+      // skip failed match (e.g. 429 rate limit)
     }
   }
 
