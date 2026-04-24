@@ -3,7 +3,8 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-GlobalFonts.registerFromPath(join(__dirname, 'fonts/Roboto.ttf'), 'Roboto');
+GlobalFonts.registerFromPath(join(__dirname, 'fonts/Roboto-Regular.ttf'), 'Roboto');
+GlobalFonts.registerFromPath(join(__dirname, 'fonts/Roboto-Bold.ttf'), 'Roboto');
 
 // ── Palette (matches index.css variables) ─────────────────────────────────
 const BG       = '#060d1a';
