@@ -96,7 +96,7 @@ export default function App() {
         <header className="dash-header">
           <div className="dash-header-top">
             <div className="dash-title">
-              <h1>Team Stats</h1>
+              <h1>Elotrain stats</h1>
               <span className="queue-badge">Ranked Flex 5v5</span>
             </div>
             <div className="dash-actions">
