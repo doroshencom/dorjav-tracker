@@ -5,7 +5,7 @@ import { renderStatsImage } from './render.js';
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-client.once('ready', () => {
+client.once('clientReady', () => {
   console.log(`✅ Bot online: ${client.user.tag}`);
 });
 
