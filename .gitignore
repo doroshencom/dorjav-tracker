@@ -31,3 +31,6 @@ dist-ssr
 
 # Claude Code local settings
 .claude
+
+# Discord bot secrets
+discord-bot/.env
